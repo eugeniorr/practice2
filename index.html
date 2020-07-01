@@ -10,14 +10,15 @@
     <link rel="stylesheet" href="styles.css">
     
     <script src="script.js" defer></script>
+    <script src="script2.js" defer></script>
   </head>  
   <body>
     <h1>Радчин Евгений</h1>
 
     
-    <!-- <details>
-      <summary>Задание 1</summary> -->
-      <canvas id="mycanvas" height="500" width="500"></canvas>
+    <details>
+      <summary>Задание 1</summary>
+      <canvas id="mycanvas" height="1000" width="1000"></canvas>
     <div class = "pol">
     <p>Введите функцию: <input type="text" id = "f" size="20" maxlength="20" value="x * x - 9" /></p>
     <p>
@@ -31,8 +32,8 @@
       до <input type="text" id = "ymax" size="20" maxlength="20" value="10.0" />
     </p>
     <p>
-      Ширина: <input type="text" id = "W" size="20" maxlength="20" value="1000" />
-      Высота: <input type="text" id = "H" size="20" maxlength="20" value="1000" />
+      Ширина: <input type="text" id = "W" size="20" maxlength="20" value="512" />
+      Высота: <input type="text" id = "H" size="20" maxlength="20" value="512" />
     </p>
     <p>
       Параметры клетки:
@@ -41,7 +42,36 @@
     </p>
     <input type="button" class = "button" onclick="yes();" value="Build">
     </div>
-    <!-- </details> -->
+    </details>
+    
+    <details>
+      <summary>Задание 2</summary>
+    <canvas id="mycanvas2" height="1000" width="1000"></canvas>
+    <div class = "pol">
+    <p>Введите функцию: <input type="text" id = "f2" size="20" maxlength="20" value="x*x+y*y-81" /></p>
+    <p>
+      Интервалы х: 
+      от <input type="text" id = "xmin2" size="20" maxlength="20" value="-10.0" />
+      до <input type="text" id = "xmax2" size="20" maxlength="20" value="10.0" />
+    </p>
+    <p>
+      Интервалы y: 
+      от <input type="text" id = "ymin2" size="20" maxlength="20" value="-10.0" />
+      до <input type="text" id = "ymax2" size="20" maxlength="20" value="10.0" />
+    </p>
+    <p>
+      Ширина: <input type="text" id = "W2" size="20" maxlength="20" value="512" />
+      Высота: <input type="text" id = "H2" size="20" maxlength="20" value="512" />
+    </p>
+    <p>
+      Параметры клетки:
+      x: <input type="text" id = "x2" size="20" maxlength="20" value="1" />
+      y: <input type="text" id = "y2" size="20" maxlength="20" value="1" />
+    </p>
+    <input type="button" class = "button" onclick="yes2();" value="Build">
+    </div>
+    </details>
+    
     <div class="glitchButton" style="position:fixed;top:20px;right:20px;"></div>
     <script src="https://button.glitch.me/button.js" defer></script>
   </body>
