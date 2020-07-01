@@ -1,0 +1,28 @@
+/* CSS files add styling rules to your content */
+
+body {
+  font-family: helvetica, arial, sans-serif;
+  margin: 2em;
+}
+
+h1 {
+  font-style: italic;
+  color: #373fff;
+}
+canvas{
+  display: inline-block;
+}
+.pol{
+  display: inline-block;
+  font-size : 20px;
+}
+.button {
+  background-color: green;
+  border: 3;
+  color: black;
+  padding: 20px 35px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 25px;
+}
