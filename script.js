@@ -62,14 +62,28 @@ class Graphics1d {
     tx.stroke();
     tx.lineWidth = 0.2;
     tx.strokeStyle = axis;
-    for (let i = 0; i < this.W; i += x * stepx){
+    for (let i = zerox; i < this.W; i += x * stepx){
       tx.beginPath();
       tx.moveTo(i, 0);
       tx.lineTo(i, this.H);
       tx.closePath();
       tx.stroke();
     }
-      for (let j = 0; j < this.H; j += y * stepy) {
+      for (let j = zeroy; j < this.H; j += y * stepy) {
+        tx.beginPath();
+        tx.lineTo(0, j);
+        tx.lineTo(this.W, j);
+        tx.closePath();
+        tx.stroke();
+      }
+      for (let i = zerox; i > 0; i -= x * stepx){
+      tx.beginPath();
+      tx.moveTo(i, 0);
+      tx.lineTo(i, this.H);
+      tx.closePath();
+      tx.stroke();
+      }
+      for (let j = zeroy; j >0; j -= y * stepy) {
         tx.beginPath();
         tx.lineTo(0, j);
         tx.lineTo(this.W, j);
