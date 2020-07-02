@@ -105,20 +105,8 @@ class Graphics1d {
             tx.closePath();
             tx.beginPath();
             tx.fillStyle = gaps;
-            tx.arc(
-              zerox + this.dots[i] * stepx,
-              zeroy - stepy * this.ymax,
-              stepx / 10,
-              0,
-              180
-            );
-            tx.arc(
-              zerox + this.dots[i] * stepx,
-              zeroy - stepy * this.ymin,
-              stepx / 10,
-              0,
-              180
-            );
+            tx.arc(zerox + this.dots[i] * stepx, zeroy - stepy * this.ymax, stepx / 10, 0, 180);
+            tx.arc(zerox + this.dots[i] * stepx, zeroy - stepy * this.ymin, stepx / 10, 0, 180);
             tx.fill();
             tx.closePath();
             tx.beginPath();
@@ -131,20 +119,11 @@ class Graphics1d {
             tx.fill();
             tx.closePath();
             tx.beginPath();
-            tx.moveTo(
-              zerox + this.dots[i - 1] * stepx,
-              zeroy - this.fvalues[i - 1] * stepy
-            );
-            tx.lineTo(
-              zerox + this.dots[i] * stepx,
-              zeroy - this.fvalues[i] * stepy
-            );
+            tx.moveTo(zerox + this.dots[i - 1] * stepx, zeroy - this.fvalues[i - 1] * stepy);
+            tx.lineTo(zerox + this.dots[i] * stepx, zeroy - this.fvalues[i] * stepy);
           }
         } else
-          tx.lineTo(
-            zerox + this.dots[i] * stepx,
-            zeroy - this.fvalues[i] * stepy
-          );
+          tx.lineTo(zerox + this.dots[i] * stepx, zeroy - this.fvalues[i] * stepy);
       }
     }
     tx.stroke();
