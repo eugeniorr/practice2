@@ -20,11 +20,22 @@ class Graphics2d {
     this.ev = 0;
   }
   evaluate() {
-    this.values = new Map();
-    for (let i = this.xmin;i <= this.xmax;i += (-this.xmin + this.xmax) / this.W) 
-      for(let j = this.ymin; j <= this.ymax; j += (-this.ymin + this.ymax) / this.H){
-        this.values[[i, j]] = this.f(i, j);
-    }
+    this.fvalues = new Float64Array(this.H * this.W);
+    this.dots = new Array (this.H * this.W);
+    let count = 0;
+    for (
+      let i = this.xmin;
+      i <= this.xmax;
+      i += (-this.xmin + this.xmax) / this.W
+    )
+      for (
+        let j = this.ymin;
+        j <= this.ymax;
+        j += (-this.ymin + this.ymax) / this.H
+      ) {
+        this.dots[count] = [i, j];
+        this.fvalues[count++] = this.f(i, j);
+      }
     this.ev = 1;
   }
   draw(
@@ -56,39 +67,37 @@ class Graphics2d {
     tx.stroke();
     tx.lineWidth = 0.2;
     tx.strokeStyle = axis;
-    for (let i = 0; i < this.W; i += sqx2 * stepx){
+    for (let i = 0; i < this.W; i += x2 * stepx) {
       tx.beginPath();
       tx.moveTo(i, 0);
       tx.lineTo(i, this.H);
       tx.closePath();
       tx.stroke();
     }
-      for (let j = 0; j < this.H; j += sqy2 * stepy) {
-        tx.beginPath();
-        tx.lineTo(0, j);
-        tx.lineTo(this.W, j);
-        tx.closePath();
-        tx.stroke();
-      }
-    
+    for (let j = 0; j < this.H; j += y2 * stepy) {
+      tx.beginPath();
+      tx.lineTo(0, j);
+      tx.lineTo(this.W, j);
+      tx.closePath();
+      tx.stroke();
+    }
+
     tx.lineWidth = 1;
     tx.strokeStyle = dots;
-    for (let i = this.xmin;i <= this.xmax;i += (-this.xmin + this.xmax) / this.W) 
-      for(let j = this.ymin; j <= this.ymax; j += (-this.ymin + this.ymax) / this.H){
-        tx.beginPath();
-        if(this.values[[i, j]] < 0){
-          tx.fillStyle = "rgba(0, 0, 255, 0.2)";
-        }
-        else if(this.values[[i, j]] > 0){
-          tx.fillStyle = "rgba(255, 0, 0, 0.2)";
-        }
-        else if(this.values[[i, j]] == 0)
-          tx.fillStyle = "rgba(255, 255, 255, 0.2)";
-        tx.arc(zerox + i * stepx, zeroy - j * stepy, 1, 0, 360);
-        tx.fill();
-        tx.closePath()
-      }
-    ;
+    console.log(this.fvalues.length, this.dots.length);
+    for (let i = 0; i < this.W * this.H; ++i) {
+      tx.beginPath();
+      if (this.fvalues[i] < 0) {
+        tx.fillStyle = "rgba(0, 0, 255, 0.2)";
+      } else if (this.fvalues[i] > 0) {
+        tx.fillStyle = "rgba(255, 0, 0, 0.2)";
+      } else if (this.fvalues[i] == 0)
+        tx.fillStyle = "rgba(255, 255, 255, 0.2)";
+      
+      tx.arc(zerox + this.dots[i][0] * stepx, zeroy - this.dots[i][1] * stepy, 1, 0, 360);
+      tx.fill();
+      tx.closePath();
+    }
     tx.font = "25px Consolas";
     tx.textBaseline = "ideographic";
     tx.fillStyle = "black";
@@ -100,18 +109,6 @@ class Graphics2d {
       zeroy + this.ymin * stepy + 25
     );
     tx.fillText(mn, zerox + this.xmin * stepx, zeroy + this.ymax * stepy);
-  }
-
-  autodraw(
-    dots = "red",
-    axis = "green",
-    zeros = "indigo",
-    gaps = "magenta",
-    bg = "gray"
-  ) {
-    this.ymin = this.f(this.xmin);
-    this.ymax = this.f(this.xmax);
-    this.draw(dots, axis, zeros, gaps, bg);
   }
 }
 function replaceSpecialSequence(str) {
@@ -142,7 +139,8 @@ function replaceSpecialSequence(str) {
   str = str.split("e").join("Math.E");
   return str;
 }
-var sqx2 = 1, sqy2 = 1;
+var x2 = 1,
+  y2 = 1;
 var nd = new Graphics2d();
 nd.draw();
 function yes2() {
@@ -153,8 +151,8 @@ function yes2() {
     W2 = parseFloat(document.getElementById("W2").value),
     H2 = parseFloat(document.getElementById("H2").value),
     f2 = document.getElementById("f2").value;
-  sqx2 = parseFloat(document.getElementById("x2").value);
-  sqy2 = parseFloat(document.getElementById("y2").value);
+  x2 = parseFloat(document.getElementById("x2").value);
+  y2 = parseFloat(document.getElementById("y2").value);
   f2 = replaceSpecialSequence(f2);
   var m2 = function(x, y) {
     return eval(f2);
