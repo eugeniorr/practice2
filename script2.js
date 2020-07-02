@@ -143,7 +143,7 @@ var x2 = 1,
   y2 = 1;
 var nd = new Graphics2d();
 nd.draw();
-function yes2() {
+function doit2() {
   var xmin2 = parseFloat(document.getElementById("xmin2").value),
     xmax2 = parseFloat(document.getElementById("xmax2").value),
     ymin2 = parseFloat(document.getElementById("ymin2").value),
@@ -151,9 +151,9 @@ function yes2() {
     W2 = parseFloat(document.getElementById("W2").value),
     H2 = parseFloat(document.getElementById("H2").value),
     f2 = document.getElementById("f2").value;
-  x2 = parseFloat(document.getElementById("x2").value);
-  y2 = parseFloat(document.getElementById("y2").value);
-  f2 = replaceSpecialSequence(f2);
+    x2 = parseFloat(document.getElementById("x2").value);
+    y2 = parseFloat(document.getElementById("y2").value);
+    f2 = replaceSpecialSequence(f2);
   var m2 = function(x, y) {
     return eval(f2);
   };

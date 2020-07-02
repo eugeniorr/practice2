@@ -205,7 +205,7 @@ var x = 1,
   y = 1;
 var ng = new Graphics1d();
 ng.draw();
-function yes() {
+function doit() {
   var xmin = parseFloat(document.getElementById("xmin").value),
     xmax = parseFloat(document.getElementById("xmax").value),
     ymin = parseFloat(document.getElementById("ymin").value),
@@ -213,9 +213,9 @@ function yes() {
     W = parseFloat(document.getElementById("W").value),
     H = parseFloat(document.getElementById("H").value),
     f = document.getElementById("f").value;
-  x = parseFloat(document.getElementById("x").value);
-  y = parseFloat(document.getElementById("y").value);
-  f = replaceSpecialSequence(f);
+    x = parseFloat(document.getElementById("x").value);
+    y = parseFloat(document.getElementById("y").value);
+    f = replaceSpecialSequence(f);
   var m = function(x) {
     return eval(f);
   };
