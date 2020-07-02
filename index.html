@@ -7,10 +7,10 @@
 
     <title>Hello!</title>
    
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="/style.css">
     
-    <script src="script.js" defer></script>
-    <script src="script2.js" defer></script>
+    <script src="/script.js" defer></script>
+    <script src="/script2.js" defer></script>
   </head>  
   <body>
     <h1>Радчин Евгений</h1>
@@ -20,7 +20,7 @@
       <summary>Задание 1</summary>
       <canvas id="mycanvas" height="1000" width="1000"></canvas>
     <div class = "pol">
-    <p>Введите функцию: <input type="text" id = "f" size="20" maxlength="20" value="x * x - 9" /></p>
+    <p>Введите функцию: <input type="text" id = "f" size="20" maxlength="1000" value="x * x - 9" /></p>
     <p>
       Интервалы х: 
       от <input type="text" id = "xmin" size="20" maxlength="20" value="-10.0" />
@@ -48,7 +48,7 @@
       <summary>Задание 2</summary>
     <canvas id="mycanvas2" height="1000" width="1000"></canvas>
     <div class = "pol">
-    <p>Введите функцию: <input type="text" id = "f2" size="20" maxlength="20" value="x*x+y*y-81" /></p>
+    <p>Введите функцию: <input type="text" id = "f2" size="20" maxlength="10000" value="x*x+y*y-81" /></p>
     <p>
       Интервалы х: 
       от <input type="text" id = "xmin2" size="20" maxlength="20" value="-10.0" />
@@ -69,6 +69,7 @@
       y: <input type="text" id = "y2" size="20" maxlength="20" value="1" />
     </p>
     <input type="button" class = "button" onclick="doit2();" value="Build">
+    <input type="button" class = "button" onclick="mult();" value="Построить функцию смешариков">
     </div>
     </details>
     

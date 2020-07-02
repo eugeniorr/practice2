@@ -139,10 +139,28 @@ function replaceSpecialSequence(str) {
   str = str.split("e").join("Math.E");
   return str;
 }
-var x2 = 1,
-  y2 = 1;
+var x2 = 1, y2 = 1;
 var nd = new Graphics2d();
 nd.draw();
+function mult() {
+  document.getElementById("xmin2").value = -15;
+  document.getElementById("xmax2").value = 15;
+  document.getElementById("ymin2").value = -15;
+  document.getElementById("ymax2").value = 15;
+  document.getElementById("f2").value = "(abs(x-y+5)+abs(x+y-5)-10)*(x*x+(y-5)*(y-5)-9)*((y-10)*(y-x-15)*(y+x-15))*(((x+7)*(x+7))+((y+5.6)*(y+5.6)) - 3)*(((x+8)*(x+8))/0.8 + ((y+7.6)*(y+7.6))/0.2 - 1)*(((x+6)*(x+6))/0.8 + ((y+7.6)*(y+7.6))/0.2 - 1)*(((x+9.1)*(x+9.1))/0.2 + ((y+6.2)*(y+6.2))/0.6 - 1)*(((x+4.9)*(x+4.9))/0.2 + ((y+6.2)*(y+6.2))/0.6 - 1)*(((x+6)*(x+6))/0.2 + ((y+2.7)*(y+2.7))/2.3 - 1)*(((x+8)*(x+8))/0.2 + ((y+2.7)*(y+2.7))/2.3 - 1)*((x+7.8)*(x+7.8)+(y+5.4)*(y+5.4)-0.2)*((x+6.3)*(x+6.3)+(y+5.4)*(y+5.4)-0.2)*(((x+7)*(x+7))/5+((y+6.5)*(y+6.5))/0.2 - 0.1)*(((x-7)*(x-7))+((y+5.6)*(y+5.6)) - 3)*(((x-7.6)*(x-7.6))/0.1 + ((y+7.8)*(y+7.8))/0.3 - 1)*(((x-6.4)*(x-6.4))/0.1 + ((y+7.8)*(y+7.8))/0.3 - 1)*(((x-9)*(x-9))/0.1 + ((y+6)*(y+6))/0.3 - 1)*(((x-5)*(x-5))/0.1 + ((y+6)*(y+6))/0.3 - 1)*(((x-7)*(x-7))/2 + ((y+6.5)*(y+6.5))/0.1 - 0.1)*((x-7.6)*(x-7.6)+(y+5.4)*(y+5.4)-0.1)*((x-6.4)*(x-6.4)+(y+5.4)*(y+5.4)-0.1)*((x-7.6)*(x-7.6)+(y+5.4)*(y+5.4)-0.3)*((x-6.4)*(x-6.4)+(y+5.4)*(y+5.4)-0.3)*((x-5.5)*(x-5.5)/0.01+(y+4.1)*(y+4.1)/0.3-1)*((x-5.9)*(x-5.9)/0.01+(y+3.7)*(y+3.7)/0.3-1)*((x-6.3)*(x-6.3)/0.01+(y+3.4)*(y+3.4)/0.3-1)*((x-6.7)*(x-6.7)/0.01+(y+3.3)*(y+3.3)/0.3-1)*((x-7.1)*(x-7.1)/0.01+(y+3.3)*(y+3.3)/0.3-1)*((x-7.5)*(x-7.5)/0.01+(y+3.4)*(y+3.4)/0.3-1)*((x-7.9)*(x-7.9)/0.01+(y+3.6)*(y+3.6)/0.3-1)*((x-8.3)*(x-8.3)/0.01+(y+3.9)*(y+3.9)/0.3-1)";
+  var xmin2 = parseFloat(document.getElementById("xmin2").value),
+    xmax2 = parseFloat(document.getElementById("xmax2").value),
+    ymin2 = parseFloat(document.getElementById("ymin2").value),
+    ymax2 = parseFloat(document.getElementById("ymax2").value),
+      W2 = parseFloat(document.getElementById("W2").value),
+    H2 = parseFloat(document.getElementById("H2").value),
+      f2 = document.getElementById("f2").value;
+  var m2 = function(x, y) {
+    return eval(f2);
+  };
+  nd = new Graphics2d(xmin2, xmax2, ymin2, ymax2, W2, H2, m2);
+  nd.draw();
+}
 function doit2() {
   var xmin2 = parseFloat(document.getElementById("xmin2").value),
     xmax2 = parseFloat(document.getElementById("xmax2").value),
