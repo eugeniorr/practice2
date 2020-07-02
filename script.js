@@ -40,16 +40,16 @@ class Graphics1d {
     gaps = "magenta",
     bg = "gray"
   ) {
-    var graph = document.getElementById("mycanvas");
-    graph.width = this.W;
-    graph.height = this.H;
-    var tx = graph.getContext("2d");
+    var func = document.getElementById("mycanvas");
+    func.width = this.W;
+    func.height = this.H;
+    var tx = func.getContext("2d");
     var drawed = new Graphics1d();
     if (this.ev == 0) this.evaluate();
     let stepx = this.W / (-this.xmin + this.xmax),
       stepy = this.H / (-this.ymin + this.ymax),
-      zerox = Math.abs(this.xmin) * stepx,
-      zeroy = Math.abs(this.ymin) * stepy;
+      zerox = -this.xmin * stepx,
+      zeroy = this.ymax * stepy;
     tx.fillStyle = bg;
     tx.fillRect(0, 0, ng.W, ng.H);
     tx.beginPath();
@@ -157,11 +157,10 @@ class Graphics1d {
     tx.fillText(
       mx,
       zerox + this.xmax * stepx - (25 * mx.length) / 1.8,
-      zeroy + this.ymin * stepy + 25
+     zeroy - this.ymax * stepy + 25
     );
-    tx.fillText(mn, zerox + this.xmin * stepx, zeroy + this.ymax * stepy);
-  }
-
+    tx.fillText(mn, zerox + this.xmin * stepx, zeroy - this.ymin * stepy);
+    }
   autodraw(
     dots = "red",
     axis = "green",
@@ -169,8 +168,8 @@ class Graphics1d {
     gaps = "magenta",
     bg = "gray"
   ) {
-    this.ymin = this.f(this.xmin);
-    this.ymax = this.f(this.xmax);
+    this.ymin = Math.min(this.f(this.xmin),this.f(this.xmax));
+    this.ymax = Math.max(this.f(this.xmin),this.f(this.xmax));
     this.draw(dots, axis, zeros, gaps, bg);
   }
 }
